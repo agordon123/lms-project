@@ -27,6 +27,7 @@ export async function POST(req:Request,{params}:{params:{courseId:string}}){
                 courseId:params.courseId
             }
         });
+        console.log(attachment);
         return NextResponse.json(attachment);
     } catch (error) {
         console.log("[attachmentId] error",error);
