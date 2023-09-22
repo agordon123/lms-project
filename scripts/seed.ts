@@ -2,6 +2,10 @@ const { PrismaClient } = require("@prisma/client");
 
 const database = new PrismaClient();
 
+/**
+ * Seed the database with categories.
+ * @returns {Promise<void>} A Promise that resolves when the seeding is complete.
+ */
 async function main() {
   try {
     await database.category.createMany({

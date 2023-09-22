@@ -7,6 +7,12 @@ interface FileUploadProps{
     endpoint:keyof typeof ourFileRouter;
 }
 
+/**
+ * Renders a file upload component with a dropzone.
+ * @param onChange - A function that is called when a file is uploaded successfully. It receives the URL of the uploaded file as a parameter.
+ * @param endpoint - The URL where the file will be uploaded.
+ * @returns A React component that renders a file upload component with a dropzone.
+ */
 export const FileUpload = ({onChange,endpoint}:FileUploadProps) => {
 
     return(

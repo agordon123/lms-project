@@ -1,3 +1,8 @@
+/**
+ * FILEPATH: /Users/adamgordon/Projects/lms-project/app/globals.css
+ * 
+ * This file contains the global CSS styles for the LMS project. It imports Tailwind CSS and sets some base styles for the HTML, body, and root elements. It also defines some custom CSS variables for colors and other styles. Additionally, it sets some styles for the Quill editor container and imports styles for the UploadThing React component.
+ */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -42,7 +42,12 @@ const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
 
   const router = useRouter();
   const { isSubmitting, isValid } = form.formState;
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  /**
+   * Handles the form submission for updating a course title.
+   * @param values - The updated course title values.
+   * @returns A Promise that resolves when the course is successfully updated.
+   */
+  const onSubmit = async (values: z.infer<typeof formSchema>): Promise<void> => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
       toast.success("Course updated");

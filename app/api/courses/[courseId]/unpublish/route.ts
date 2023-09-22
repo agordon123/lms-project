@@ -3,6 +3,12 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 
+/**
+ * Updates the isPublished property of a course to false, effectively unpublishing it.
+ * @param req - The request object.
+ * @param params - An object containing the courseId parameter.
+ * @returns A JSON response containing the updated course object, or an error response if the request fails.
+ */
 export async function PATCH(
   req: Request,
   { params }: { params: { courseId: string } }

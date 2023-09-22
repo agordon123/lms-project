@@ -2,6 +2,12 @@ import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 
+/**
+ * Reorders the chapters of a course.
+ * @param req - The request object.
+ * @param params - The parameters object containing the courseId.
+ * @returns A NextResponse indicating success or failure.
+ */
 export async function PUT(
   req: Request,
   { params }: { params: { courseId: string } }

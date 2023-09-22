@@ -3,7 +3,10 @@
 import ReactConfetti from "react-confetti";
 
 import { useConfettiStore } from "@/hooks/useConfettiStore";
-
+/**
+ * Renders confetti when `isOpen` is true.
+ * @returns {JSX.Element | null} The confetti component or null if `isOpen` is false.
+ */
 export const ConfettiProvider = () => {
   const confetti = useConfettiStore();
 
@@ -18,5 +21,5 @@ export const ConfettiProvider = () => {
         confetti.onClose();
       }}
     />
-  )
-}
+  );
+};

@@ -29,6 +29,12 @@ export const ChaptersList = ({
   useEffect(() => {
     setChapters(items);
   }, [items]);
+
+    /**
+   * Handles the drag and drop reordering of chapters.
+   * @param result - The result of the drag and drop operation.
+   * @returns void
+   */
   const onDragEnd = (result: DropResult) => {
     if (!result.destination) return;
 

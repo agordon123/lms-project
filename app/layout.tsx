@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   description: "Built with NextJS13 , TailwindCSS, and ShadcnUI",
 };
 
+/**
+ * Renders the root layout of the application.
+ * @param children - The child components to be rendered within the layout.
+ * @returns The root layout component.
+ */
 export default function RootLayout({
   children,
 }: {

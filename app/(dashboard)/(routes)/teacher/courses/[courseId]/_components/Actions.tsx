@@ -13,6 +13,14 @@ interface ActionsProps {
   isPublished: boolean;
 }
 
+/**
+ * Renders the actions component for a course.
+ * @param {Object} props - The component props.
+ * @param {boolean} props.disabled - Whether the component is disabled.
+ * @param {string} props.courseId - The ID of the course.
+ * @param {boolean} props.isPublished - Whether the course is published.
+ * @returns {JSX.Element} - The rendered component.
+ */
 export const Actions = ({
     disabled,
     courseId,

@@ -50,7 +50,12 @@ export const PriceForm = ({
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  /**
+   * Handles form submission for updating course price.
+   * @param values - The form values.
+   * @returns Promise that resolves when the course is updated.
+   */
+  const onSubmit = async (values: z.infer<typeof formSchema>): Promise<void> => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
       toast.success("Course updated");

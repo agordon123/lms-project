@@ -8,6 +8,15 @@ const { Video } = new Mux(
   process.env.MUX_SECRET_KEY!
 );
 
+/**
+ * Deletes a course and its associated chapters and videos.
+ * @async
+ * @function DELETE
+ * @param {Request} req - The HTTP request object.
+ * @param {Object} params - An object containing the course ID to delete.
+ * @param {string} params.courseId - The ID of the course to delete.
+ * @returns {Promise<NextResponse>} A Promise that resolves to a NextResponse object.
+ */
 export async function DELETE(
   req: Request,
   { params }: { params: { courseId: string } }

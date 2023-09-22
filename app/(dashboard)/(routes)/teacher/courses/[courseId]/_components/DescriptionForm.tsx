@@ -50,7 +50,12 @@ export const DescriptionForm = ({
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  /**
+   * Handles the form submission for updating the course description.
+   * @param values - The form values to be submitted.
+   * @returns A Promise that resolves when the course is successfully updated.
+   */
+  const onSubmit = async (values: z.infer<typeof formSchema>): Promise<void> => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
       toast.success("Course updated");

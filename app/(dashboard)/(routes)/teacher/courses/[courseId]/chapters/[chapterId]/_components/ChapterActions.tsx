@@ -13,6 +13,15 @@ interface ChapterActionProps {
   isPublished: boolean;
 }
 
+/**
+ * Component for displaying chapter actions (publish/unpublish and delete).
+ * @param {Object} props - The component props.
+ * @param {boolean} props.disabled - Whether the component is disabled.
+ * @param {string} props.courseId - The ID of the course the chapter belongs to.
+ * @param {string} props.chapterId - The ID of the chapter.
+ * @param {boolean} props.isPublished - Whether the chapter is published.
+ * @returns {JSX.Element} - The rendered component.
+ */
 export const ChapterActions = ({
   disabled,
   courseId,
@@ -21,19 +30,27 @@ export const ChapterActions = ({
 }: ChapterActionProps) => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const onDelete = async()=>{
-    try{
+
+  /**
+   * Handler function for deleting the chapter.
+   */
+  const onDelete = async () => {
+    try {
       setLoading(true);
       await axios.delete(`/api/courses/${courseId}/chapters/${chapterId}`);
       toast.success("Chapter deleted successfully");
       router.refresh();
-      router.push(`/teacher/course/${courseId}`); 
-    }catch(err){
+      router.push(`/teacher/course/${courseId}`);
+    } catch (err) {
       toast.error("Something went Wrong");
-    }finally{
+    } finally {
       setLoading(false);
     }
-  }
+  };
+
+  /**
+   * Handler function for publishing/unpublishing the chapter.
+   */
   const onClick = async () => {
     try {
       setLoading(true);
@@ -52,7 +69,8 @@ export const ChapterActions = ({
     } finally {
       setLoading(false);
     }
-  }
+  };
+
   return (
     <div className="flex items-center gap-x-2">
       <Button
@@ -64,9 +82,9 @@ export const ChapterActions = ({
         {isPublished ? "Unpublish" : "Publish"}
       </Button>
       <ConfirmModal onConfirm={onDelete}>
-      <Button size="sm">
-        <Trash className="h-4 w-4"></Trash>
-      </Button>
+        <Button size="sm">
+          <Trash className="h-4 w-4"></Trash>
+        </Button>
       </ConfirmModal>
     </div>
   );

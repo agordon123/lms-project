@@ -47,16 +47,21 @@ export const ChapterAccessForm = ({initialData,courseId,chapterId}:ChapterAccess
         }
     });
     const {isSubmitting,isValid} = form.formState;
-    const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        try {
-          await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
-          toast.success("Chapter updated");
-          toggleEdit();
-          router.refresh();
-        } catch {
-          toast.error("Something went wrong");
-        }
+    /**
+     * Handles submitting the form data to update a chapter's access settings.
+     * @param values - The form data to be submitted.
+     * @returns A Promise that resolves when the chapter is successfully updated.
+     */
+    const onSubmit = async (values: z.infer<typeof formSchema>): Promise<void> => {
+      try {
+        await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
+        toast.success("Chapter updated");
+        toggleEdit();
+        router.refresh();
+      } catch {
+        toast.error("Something went wrong");
       }
+    }
 
       return(
         <div className="mt-6 border bg-slate-100 rounded-md p-4">

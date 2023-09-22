@@ -11,8 +11,17 @@ import {
   AlertDialogFooter,
   AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
+/**
+ * Props for the ConfirmModal component.
+ */
 interface ConfirmModalProps {
+  /**
+   * The content to be displayed inside the modal.
+   */
   children: React.ReactNode;
+  /**
+   * The function to be called when the user confirms the action.
+   */
   onConfirm: () => void;
 }
 

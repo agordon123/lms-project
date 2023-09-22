@@ -3,4 +3,4 @@
 ## Getting Started
 
 Packages Featured
-NextJS 13.4.12 - Tailwind CSS - ShadcnUI - Mux - Prisma - MySQL
+NextJS 13.4.12 - Tailwind CSS - ShadcnUI - Mux - Prisma - MySQL 

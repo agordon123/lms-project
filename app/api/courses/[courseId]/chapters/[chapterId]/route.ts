@@ -5,6 +5,12 @@ import { db } from "@/lib/db";
 import Mux from "@mux/mux-node";
 
 const {Video} =  new Mux(process.env.MUX_TOKEN_ID!, process.env.MUX_SECRET_KEY!);
+/**
+ * Deletes a chapter from a course.
+ * @param req - The request object.
+ * @param params - The parameters object containing the courseId and chapterId.
+ * @returns A JSON response containing the deleted chapter.
+ */
 export async function DELETE(
   req: Request,
   { params }: { params: { courseId: string; chapterId: string } }

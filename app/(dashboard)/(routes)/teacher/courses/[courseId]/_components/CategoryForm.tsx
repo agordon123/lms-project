@@ -51,7 +51,12 @@ export const CategoryForm = ({
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  /**
+   * Handles the form submission for updating a course category.
+   * @param values - The form values.
+   * @returns A Promise that resolves when the course is updated.
+   */
+  const onSubmit = async (values: z.infer<typeof formSchema>): Promise<void> => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
       toast.success("Course updated");

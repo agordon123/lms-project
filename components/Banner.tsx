@@ -2,6 +2,10 @@ import { AlertTriangle, CheckCircleIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+/**
+ * Defines the banner variants for the Banner component.
+ * @returns {Object} The banner variants object.
+ */
 const bannerVariants = cva(
   "border text-center p-4 text-sm flex items-center w-full",
   {

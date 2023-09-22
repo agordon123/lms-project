@@ -43,6 +43,11 @@ export const AttachmentForm = ({
     }
   };
 
+  /**
+   * Deletes an attachment with the given ID from the course with the specified ID.
+   * @param id - The ID of the attachment to delete.
+   * @returns A Promise that resolves when the attachment is successfully deleted, or rejects if an error occurs.
+   */
   const onDelete = async (id: string) => {
     try {
       setDeletingId(id);

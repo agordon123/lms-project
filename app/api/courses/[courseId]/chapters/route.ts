@@ -2,6 +2,12 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
 
+/**
+ * Creates a new chapter for a given course.
+ * @param req - The request object.
+ * @param params - The parameters object containing the courseId.
+ * @returns A JSON response containing the newly created chapter.
+ */
 export async function POST(req:Request,{params}:{params:{courseId:string} }){
     try {
         const {userId} = auth();

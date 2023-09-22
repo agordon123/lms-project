@@ -1,5 +1,9 @@
 import { Logo } from "./Logo";
 import { SidebarRoutes } from "./SidebarRoutes";
+/**
+ * Renders the sidebar component.
+ * @returns JSX.Element
+ */
 export const Sidebar = () => {
   return (
     <div className="h-full border-r flex flex-col overflow-y-auto bg-white shadow-sm">

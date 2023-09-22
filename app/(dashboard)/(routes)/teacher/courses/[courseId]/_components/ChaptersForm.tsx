@@ -60,6 +60,11 @@ export const ChapterForm = ({
       toast.error("Something went wrong");
     }
   }
+  /**
+   * Reorders the chapters of a course.
+   * @param updateData - An array of objects containing the id and position of the chapters to be updated.
+   * @returns Promise<void>
+   */
   const onReorder = async (updateData: { id: string; position: number }[]) => {
     try {
       setIsUpdating(true);

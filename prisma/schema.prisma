@@ -1,3 +1,5 @@
+/// This is the Prisma schema file for an LMS (Learning Management System) project. It defines the data models and their relationships for the project's database. The schema includes models for courses, categories, attachments, chapters, user progress, purchases, and Stripe customers. Each model has its own set of fields and attributes, such as IDs, titles, descriptions, URLs, and timestamps. The schema also includes relationships between models, such as one-to-many and many-to-many relationships. The schema is written in Prisma syntax, which is a type-safe database client that can be used to interact with the database. Learn more about Prisma schema in the docs: https://pris.ly/d/prisma-schema
+// FILEPATH: /Users/adamgordon/Projects/lms-project/prisma/schema.prisma
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
@@ -12,38 +14,40 @@ generator client {
 }
 
 model Course {
-  id String @id @default(uuid())
+  id     String @id @default(uuid())
   userId String
-  title String @db.Text
+  title  String @db.Text
 
   description String? @db.Text
-  imageUrl String? @db.Text
-  price Float?
+  imageUrl    String? @db.Text
+  price       Float?
   isPublished Boolean @default(false)
 
   categoryId String?
-  category Category? @relation(fields: [categoryId], references: [id])
+  category   Category? @relation(fields: [categoryId], references: [id])
 
-  chapters Chapter[]
+  chapters    Chapter[]
   attachments Attachment[]
-  purchases Purchase[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  purchases   Purchase[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
   @@index([categoryId])
 }
+
 model Category {
-  id String @id @default(uuid())
-  name String @unique
+  id      String   @id @default(uuid())
+  name    String   @unique
   courses Course[]
 }
-model Attachment{
-  id String @id @default(uuid())
-  name String
-  url String @db.Text
-  
-  courseId String
-  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
+model Attachment {
+  id   String @id @default(uuid())
+  name String
+  url  String @db.Text
+
+  courseId String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -51,66 +55,69 @@ model Attachment{
   @@index([courseId])
 }
 
-model Chapter{
-  id String @id @default(uuid())
-  title String
+model Chapter {
+  id          String  @id @default(uuid())
+  title       String
   description String? @db.Text
-  videoUrl String? @db.Text
-  position Int  
+  videoUrl    String? @db.Text
+  position    Int
   isPublished Boolean @default(false)
-  isFree Boolean @default(false)
+  isFree      Boolean @default(false)
 
-  muxData MuxData?
+  muxData  MuxData?
   courseId String
-  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course   Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   userProgress UserProgress[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
   @@index([courseId])
 }
-model MuxData{
-  id String @id @default(uuid())
-  chapterId String @unique
-  assetId String
+
+model MuxData {
+  id         String @id @default(uuid())
+  chapterId  String @unique
+  assetId    String
   playbackId String
 
   chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
 }
 
-model UserProgress{
-  id String @id @default(uuid())
+model UserProgress {
+  id     String @id @default(uuid())
   userId String
 
-  chapterId String
-  chapter Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  chapterId   String
+  chapter     Chapter @relation(fields: [chapterId], references: [id], onDelete: Cascade)
   isCompleted Boolean @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([userId])
   @@unique([chapterId])
+  @@index([userId])
 }
 
-model Purchase{
-  id String @id @default(uuid())
+model Purchase {
+  id     String @id @default(uuid())
   userId String
 
   courseId String
-  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
   @@unique([userId, courseId])
   @@index([courseId]) //create back relation to course modell
 }
 
-model StripeCustomer{
-  id String @id @default(uuid())
-  userId String @unique
-  stripeCustomerId String @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model StripeCustomer {
+  id               String   @id @default(uuid())
+  userId           String   @unique
+  stripeCustomerId String   @unique
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
 }

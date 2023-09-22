@@ -25,6 +25,12 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     return redirect("/");
   }
 
+  /**
+   * Retrieves a course with its attachments and chapters from the database.
+   * @param courseId - The ID of the course to retrieve.
+   * @param userId - The ID of the user who owns the course.
+   * @returns A Promise that resolves to the retrieved course with its attachments and chapters.
+   */
   const course = await db.course.findUnique({
     where: {
       id: params.courseId,

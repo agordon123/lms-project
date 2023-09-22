@@ -3,6 +3,12 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 
+/**
+ * PATCH method for unpublishing a chapter in a course.
+ * @param req - The request object.
+ * @param params - The parameters object containing courseId and chapterId.
+ * @returns A NextResponse object with the unpublished chapter data or an error response.
+ */
 export async function PATCH(
   req: Request,
   { params }: { params: { courseId: string; chapterId: string } }

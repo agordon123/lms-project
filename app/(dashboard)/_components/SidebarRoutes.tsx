@@ -19,6 +19,12 @@ const teacherRoutes = [
   { icon: List, label: "Courses", href: "/teacher/courses" },
   { icon: BarChart, label: "Analytics", href: "/teacher/analytics" },
 ];
+
+/**
+ * Renders the sidebar routes based on the current pathname.
+ * If the pathname includes "/teacher", it renders teacher routes, otherwise it renders guest routes.
+ * @returns A React component that renders the sidebar routes.
+ */
 export const SidebarRoutes = () => {
 
   const pathname = usePathname();

@@ -2,6 +2,11 @@ import { LucideIcon } from "lucide-react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
+/**
+ * A utility function that generates background variants for an IconBadge component.
+ * @param {string} classNames - The class names to be applied to the component.
+ * @returns {string} - The generated class names for the component.
+ */
 const backgroundVariants = cva("rounded-full flex items-center justify-center", {
     variants: {
         variant: {

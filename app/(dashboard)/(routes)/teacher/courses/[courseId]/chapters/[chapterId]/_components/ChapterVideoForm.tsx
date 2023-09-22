@@ -34,7 +34,13 @@ export const ChapterVideoForm = ({
 
   const router = useRouter();
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  /**
+   * Submits the form data to update the chapter video.
+   * @param values - The form data to be submitted.
+   * @returns A Promise that resolves when the chapter is successfully updated.
+   * @throws An error if something goes wrong during the update process.
+   */
+  const onSubmit = async (values: z.infer<typeof formSchema>): Promise<void> => {
     try {
       await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
       toast.success("Chapter updated");

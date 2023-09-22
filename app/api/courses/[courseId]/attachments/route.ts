@@ -3,6 +3,12 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 
+/**
+ * Handles the POST request for creating a new attachment for a course.
+ * @param req - The request object.
+ * @param params - An object containing the courseId parameter.
+ * @returns A JSON response containing the created attachment object, or an error response if there was an issue.
+ */
 export async function POST(req:Request,{params}:{params:{courseId:string}}){
     try {
         const {userId} = auth();

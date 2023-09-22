@@ -52,7 +52,12 @@ export const ChapterDescriptionForm = ({
 
   const { isSubmitting, isValid } = form.formState;
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  /**
+   * Handles form submission for updating chapter description.
+   * @param values - The form values to be submitted.
+   * @returns Promise<void>
+   */
+  const onSubmit = async (values: z.infer<typeof formSchema>): Promise<void> => {
     try {
       await axios.patch(`/api/courses/${courseId}/chapters/${chapterId}`, values);
       toast.success("Chapter updated");

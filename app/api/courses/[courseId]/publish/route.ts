@@ -3,6 +3,12 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 
+/**
+ * PATCH request to publish a course.
+ * @param req - The request object.
+ * @param params - The parameters object containing the courseId.
+ * @returns A NextResponse object with the published course data or an error message.
+ */
 export async function PATCH(
   req: Request,
   { params }: { params: { courseId: string } }

@@ -10,6 +10,10 @@ import Link from "next/link";
 export const NavbarRoutes = () => {
   const pathname = usePathname();
 
+  /**
+   * Checks if the current page is a teacher page by checking if the pathname starts with "/teacher".
+   * @returns {boolean} Returns true if the current page is a teacher page, false otherwise.
+   */
   const isTeacherPage = pathname?.startsWith("/teacher");
   const isPlayerPage = pathname?.startsWith("/chapter");
   return (

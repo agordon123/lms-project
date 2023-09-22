@@ -3,6 +3,13 @@ import { NextResponse } from "next/server";
 
 import { db } from "@/lib/db";
 
+/**
+ * Updates the isPublished property of a chapter to true and returns the updated chapter.
+ * @param req - The request object.
+ * @param params - An object containing the courseId and chapterId parameters.
+ * @returns The updated chapter object.
+ * @throws {NextResponse} If the user is unauthorized, the required fields are missing, or an internal error occurs.
+ */
 export async function PATCH(
   req: Request,
   { params }: { params: { courseId: string; chapterId: string } }
