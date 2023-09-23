@@ -7,7 +7,7 @@ import {
   SheetTrigger
 } from "@/components/ui/sheet";
 
-import  CourseSidebar  from "./CourseSidebar";
+import  {CourseSidebar } from "./CourseSidebar";
 
 interface CourseMobileSidebarProps {
   course: Course & {

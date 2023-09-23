@@ -10,7 +10,7 @@ interface CourseSidebarItemProps {
     isLocked:boolean;
 }
 
-const CourseSidebarItem = ({label,id,isCompleted,courseId,isLocked}:CourseSidebarItemProps) => {
+export const CourseSidebarItem = ({label,id,isCompleted,courseId,isLocked}:CourseSidebarItemProps) => {
     const pathname = usePathname();
     const router = useRouter();
 

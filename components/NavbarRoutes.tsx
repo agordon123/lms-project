@@ -1,14 +1,15 @@
 "use client";
 
-import { UserButton } from "@clerk/nextjs";
+import { UserButton,useAuth } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { Button } from "./ui/button";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
 import SearchInput from "./SearchInput";
+import { isTeacher } from "@/lib/teacher";
 export const NavbarRoutes = () => {
   const pathname = usePathname();
-
+  const { userId } = useAuth();
   /**
    * Checks if the current page is a teacher page by checking if the pathname starts with "/teacher".
    * @returns {boolean} Returns true if the current page is a teacher page, false otherwise.
@@ -32,13 +33,13 @@ export const NavbarRoutes = () => {
               Exit</LogOut>
           </Button>
           </Link>
-        ) : (
+        ) :  isTeacher(userId) ?(
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">
               Teacher Mode
             </Button>
           </Link>
-        )}
+        ) :null}
         <UserButton afterSignOutUrl="/" />
       </div>
     </>

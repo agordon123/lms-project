@@ -1,5 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import { File } from "lucide-react";
+import { Preview } from "@/components/Preview";
 import { Separator } from "@/components/ui/separator";
 import { getChapter } from "@/actions/getChapter";
 import { Banner } from "@/components/Banner";
@@ -52,27 +54,49 @@ const ChapterIdPage = async ({
             nextChapterId={nextChapter?.id}
             isLocked={isLocked}
             completeOnEnd={completeOnEnd}
-            playbackId={muxData?.playbackId}
+            playbackId={muxData?.playbackId!}
           />
         </div>
       </div>
       <div>
         <div className="p-4 flex flex-col md:flex-row items-center justify-between">
-            <h2 className="text-2xl font-semibold mb-2">
-                {chapter.title}
-            </h2>
-            {purchase ? (
-                <CourseProgressButton
-                chapterId={params.chapterId}
-                courseId={params.courseId}
-                nextChapterId={nextChapter?.id}
-                isCompleted={!!userProgress?.isCompleted}
-                />
-            ):(
-                <CourseEnrollButton courseId={params.courseId} price={course.price!} />
-            )}
+          <h2 className="text-2xl font-semibold mb-2">{chapter.title}</h2>
+          {purchase ? (
+            <CourseProgressButton
+              chapterId={params.chapterId}
+              courseId={params.courseId}
+              nextChapterId={nextChapter?.id}
+              isCompleted={!!userProgress?.isCompleted}
+            />
+          ) : (
+            <CourseEnrollButton
+              courseId={params.courseId}
+              price={course.price!}
+            />
+          )}
         </div>
-        <Seperator />
+        <Separator />
+        <div>
+          <Preview value={chapter.description!} />
+        </div>
+        {!!attachments.length && (
+          <>
+            <Separator />
+            <div className="p-4">
+              {attachments.map((attachment) => (
+                <a
+                  href={attachment.url}
+                  target="_blank"
+                  key={attachment.id}
+                  className="flex items-center p-3 w-full bg-sky-200 border text-sky-700 rounded-md hover:underline"
+                >
+                  <File />
+                  <p className="line-clamp-1">{attachment.name}</p>
+                </a>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

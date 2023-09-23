@@ -90,5 +90,14 @@ export const getChapter = async ({
     };
   } catch (error) {
     console.log("GET CHAPTER", error);
+    return {
+      chapter: null,
+      course: null,
+      muxData: null,
+      attachments: [],
+      nextChapter: null,
+      userProgress: null,
+      purchase: null,
+    }
   }
 };
