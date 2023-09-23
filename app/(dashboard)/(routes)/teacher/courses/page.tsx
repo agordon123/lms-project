@@ -1,9 +1,12 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
-const CoursesPage = async() => {
+import { DataTable } from "./_components/DataTable";
+import { columns } from "./_components/Columns";
+
+
+
+const CoursesPage = async () => {
   const { userId } = auth();
 
   if (!userId) {
@@ -20,13 +23,7 @@ const CoursesPage = async() => {
   });
   return (
     <div className="p-6">
-     
-        <Button>
-        <Link href="/teacher/create">
-          New Course
-          </Link>
-        </Button>
-      
+      <DataTable columns={columns} data={courses} />
     </div>
   );
 };
