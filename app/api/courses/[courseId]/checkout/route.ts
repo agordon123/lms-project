@@ -11,11 +11,11 @@ export async function POST(
 ) {
   try {
     const user = await currentUser();
-
+    console.log(currentUser);
     if (!user || !user.id || !user.emailAddresses?.[0]?.emailAddress) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
-
+    console.log(user)
     const course = await db.course.findUnique({
       where: {
         id: params.courseId,

@@ -1,3 +1,4 @@
+
 import { Menu } from "lucide-react";
 import { Chapter, Course, UserProgress } from "@prisma/client";
 
